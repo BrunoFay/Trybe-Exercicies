@@ -1,0 +1,23 @@
+GIT 2.1
+git add [nome do arquivo]
+git add . (adiciona todos arquivos fora do repositorio ou arquivos modificados)
+git status (acompanhar o status do commit e da adição)
+git init (transforma o diretorio atual em arquivos para enviar ao repositorio)
+
+Para sincronizar um novo repositorio
+git remote add origin "URL_DO_REPOSITÓRIO" ( comando para adicionar a URL ao repositório local )
+git branch -M master
+git push origin master (comando para upar no repositorio)IMPORTANTE
+git remote -v (conferir se a sincronização do repositorio deu certo)
+
+GIT 2.2
+git log (mostra as informações do commit)
+git rm  (exclui arquivos no git)
+git log --diff-filter=D --summary (mostra quais commits tem arquivos deletados)IMPORTANTE
+git checkout [4 primeiros numeros do commit deletado]~1 [nome do arquivo à ser restaurado]  (comando para restaurar arquivos deletados) IMPORTANTE
+touch .gitignore (cria um diretorio capaz de armazenar as informações de arquivos e diretorios à serem ignorados)git fetch (verifica se ha alterações entre o repositorio local e o repositorio remoto)
+
+git pull  (verifica se ha alterações entre o repositorio local e o repositorio remoto e faz um "merge" as branchs)
+touch .gitignore (cria um diretorio capaz de armazenar as informações de arquivos e diretorios à serem ignorados)
+git fetch (verifica se ha alterações entre o repositorio local e o repositorio remoto)
+git pull  (verifica se ha alterações entre o repositorio local e o repositorio remoto, trazendo as alterações feitas atravéz de um "merge" das branchs)
