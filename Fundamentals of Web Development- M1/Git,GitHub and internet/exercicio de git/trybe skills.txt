@@ -5,4 +5,5 @@ O que eu vou aprender na Trybe:
 - NODE
 - HTML
 - CSS
-
+- MSQL
+- JASON
