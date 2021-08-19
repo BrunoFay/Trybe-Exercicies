@@ -1,0 +1,7 @@
+favicons
+https://favicon.io/
+https://iconarchive.com/
+
+
+fontes
+https://fonts.google.com/
