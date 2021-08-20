@@ -1,0 +1,19 @@
+body{
+    background-color: darkgrey;
+}
+h1,p{
+    text-align: center;
+}
+ol,ul{
+    list-style: none;
+    text-align: center;
+}
+li:hover{
+    background-color: blue;
+
+}
+li:active{
+    font-family: 'Times New Roman', Times, serif
+    ;
+   color: cornsilk;
+}
