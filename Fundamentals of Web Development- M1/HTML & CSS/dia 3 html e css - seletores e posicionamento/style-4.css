@@ -1,26 +1,31 @@
 div :hover{
-background-color: teal;}
+border: 5px solid goldenrod;}
 
 #primária h3{ 
 background-color:yellow ;
 font-family: monospace ;
+color: yellowgreen;
 
 }
 #Secundária h3{ 
 background-color:green ;
 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+color: yellow;
 }
 #Complementar h3{
 background-color:plum;
 font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 padding: 70px;
+color: black;
 }
 #Escura h3{
 background-color:saddlebrown ;
 font-family: Verdana, Geneva, Tahoma, sans-serif;
+color: plum;
 }
 #Clara h3{
 background-color:turquoise ;
+color: saddlebrown;
 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 }
