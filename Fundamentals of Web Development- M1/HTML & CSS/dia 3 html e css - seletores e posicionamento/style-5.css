@@ -1,0 +1,47 @@
+ol {
+    background-color: yellow;
+}
+li:nth-of-type(odd){
+    text-transform: uppercase;
+}
+ol li:nth-of-type(even){
+    color: green;
+}
+
+h1,h2,h3{ 
+    color: red;
+}
+h1,h2,h3.italic{
+
+        height: 40px;
+        border: black solid 1px;
+    }
+li{
+font-size: 20px
+;}
+ol li{
+    font-weight: 200;
+
+}
+.java{
+    background-color: pink;
+}
+.liblue{
+    color: blue;
+}
+.laranja :hover{
+    background-color: orange;
+
+}
+.verde :hover{background-color: green;
+
+}
+.preta :hover{background-color: black;
+
+}
+.amarela :hover{background-color: yellow;
+
+}
+.verdetrybe:hover{background-color: rgb(9, 211, 9);
+
+}
