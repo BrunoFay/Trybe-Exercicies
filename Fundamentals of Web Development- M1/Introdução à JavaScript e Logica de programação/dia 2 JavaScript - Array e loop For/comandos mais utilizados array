@@ -1,0 +1,8 @@
+.length ---> conta o numero de elementos
+.length-1---> é relacionado ao ultimo elemento do array
+.push()---> adiciona um elemento ao final do array
+.unshift()---> para adicionar um elemento no inicio do array
+.pop()---->remove o ultimo elemento do array
+.shift()--->remove o primeiro elemento do array
+indexOf()---> usado para procurar a posição de um item no Array
+.sort() ---> ordenar 

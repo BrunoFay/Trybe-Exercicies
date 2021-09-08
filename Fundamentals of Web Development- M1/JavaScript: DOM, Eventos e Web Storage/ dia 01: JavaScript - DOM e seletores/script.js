@@ -1,0 +1,15 @@
+document.querySelector("#header-container").style.color = "purple";
+document.querySelector("#header-container").style.backgroundColor = "orange";
+document.getElementById("footer-container").style.color = "purple"
+document.getElementById("footer-container").style.backgroundColor = "orange"
+document.querySelector(".emergency-tasks h3").style.color = "gold";
+document.querySelectorAll(".emergency-tasks h3")[0].style.color ="gold"
+document.querySelectorAll(".emergency-tasks h3")[1].style.color ="gold"
+document.querySelectorAll(".emergency-tasks h3")[0].style.backgroundColor ="brown"
+document.querySelectorAll(".emergency-tasks h3")[1].style.backgroundColor ="brown"
+document.querySelectorAll(".no-emergency-tasks h3")[1].style.backgroundColor ="grey"
+document.querySelectorAll(".no-emergency-tasks h3")[0].style.backgroundColor ="grey"
+document.querySelectorAll(".no-emergency-tasks h3")[0].style.color ="black"
+document.querySelectorAll(".no-emergency-tasks h3")[1].style.color ="black"
+document.getElementsByClassName("no-emergency-tasks")[0].style.backgroundColor ="palegoldenrod"
+document.getElementsByClassName("emergency-tasks")[0].style.backgroundColor ="powderblue"
