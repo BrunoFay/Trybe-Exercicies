@@ -63,3 +63,24 @@ thirdLi.addEventListener('dblclick', resetText);
 // Não precisa passar o parâmetro dentro da callback resetText. O próprio
 // navegador fará esse trabalho por você, não é legal? Desse jeito, o
 // event.target na nossa função retornará o objeto 'firstLi'.
+
+
+/* funçoes para mudar a cor de fundo de forma aleatoria */
+function changeColorRandom(params) {
+  let r =Math.floor(Math.random()*255)
+  let g =Math.floor(Math.random()*255)
+  let b =Math.floor(Math.random()*255)
+  params.style.backgroundColor =`rgb(${r},${g},${b})`
+
+}
+let body= document.querySelector("body")
+function godSaveTheQueen() {
+  changeColorRandom (firstLi)
+  changeColorRandom (secondLi)
+  changeColorRandom (thirdLi)
+  changeColorRandom (body)
+  
+}
+/* função que controla o intervalo de tempo para chamar uma função Timeout é depois de o tempo passado, executa a função setInterval repete a função a cada 3 segundos*/ 
+setInterval(godSaveTheQueen,5000)
+
