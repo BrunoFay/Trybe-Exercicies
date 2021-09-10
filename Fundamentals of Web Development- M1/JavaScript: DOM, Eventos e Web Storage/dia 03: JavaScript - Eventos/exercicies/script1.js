@@ -24,11 +24,11 @@ function createDaysOfTheWeek() {
        // criei o li colocando a classe day dentro dele com o for
        const dayNumbList = document.createElement('li');
        if (dezDaysList[index] == 24 || dezDaysList[index] == 31) {
-        dayNumbList.className = "holiday";
+        dayNumbList.className = "day holiday";
            
        }
        else if(dezDaysList[index] == 4 || dezDaysList[index] == 11 || dezDaysList[index] == 18){
-        dayNumbList.className = "friday";
+        dayNumbList.className = " day friday";
            
         }
         else if(dezDaysList[index] == 25){
@@ -115,3 +115,90 @@ function createDaysOfTheWeek() {
   }
   let  daysFriday = [4,11,18,25]
   fridayProperties(daysFriday)
+
+  /* exercicio 6 */
+  let dayClass = document.querySelectorAll(".day")
+  function zoomIn(event) {
+    let daysId = document.querySelector("#days")
+    daysId.addEventListener("mouseover",function (event) {
+      for (let index = 0; index < dayClass.length; index++) {
+        event.target.style.fontSize = '30px';
+        event.target.style.fontWeight = '600';
+      
+    
+        
+      }
+    })
+    console.log("test");
+  }
+  zoomIn()
+  function zoomOut(event) {
+    let daysId = document.querySelector("#days")
+    daysId.addEventListener("mouseout",function (event) {
+      for (let index = 0; index < dayClass.length; index++) {
+        event.target.style.fontSize = '22px';
+        event.target.style.fontWeight = '500'; 
+      }
+    })
+    
+  }
+  zoomOut()
+
+  /* exercicio 7 */
+
+  function personalT(params) {
+    
+    let creatT= document.createElement("span")    
+    creatT.innerHTML = params
+    let dadCreatT= document.querySelector(".my-tasks")
+    dadCreatT.appendChild(creatT)
+  }
+  personalT("cozinhar")
+
+  /* exercicio 8 */
+ let collorT = "purple"
+  function pensonalTBackColor(params) {
+   let divElement = document.createElement("div")
+   divElement.classList.add("task")
+   divElement.style.backgroundColor = params
+   let dadDivElement = document.querySelector(".my-tasks") 
+    dadDivElement.appendChild(divElement)
+  }
+  pensonalTBackColor(collorT)
+
+  /* exercicio 9 */
+
+  function selectElement() {
+    let divPersonalTB = document.querySelector(".task")
+    divPersonalTB.addEventListener("click",function () {
+      if(divPersonalTB.className == "task"){
+        divPersonalTB.className = "task selected "
+      }
+      else{
+        divPersonalTB.className = "task"
+      }
+    })
+    
+  }
+  selectElement()
+
+  /* exercicio 10 */
+  
+  function setDayColor() {
+    let selectedTask = document.getElementsByClassName('task selected');
+    let days = document.querySelector('#days');
+    let taskDiv = document.querySelector('.task');
+    let taskColor = taskDiv.style.backgroundColor;
+    
+    days.addEventListener('click', function(event){
+      let eventTargetColor = event.target.style.color;
+      if (selectedTask.length > 0 && eventTargetColor !== taskColor) {
+        let color = selectedTask[0].style.backgroundColor;
+        event.target.style.color = color;
+      } else if (eventTargetColor === taskColor && selectedTask.length !== 0) {
+        event.target.style.color = 'rgb(119,119,119)';
+      }
+    });
+  };
+  
+  setDayColor();
