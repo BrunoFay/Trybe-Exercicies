@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="exercicio.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" method="get">
+        <fieldset>
+            <label for="name">Nome</label>
+            <input type="text" name="name" id="name" required maxlength="40">
+            <div class="espaço"></div>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required maxlength="50">
+            <div class="espaço"></div>
+            <label for="cpf">CPF</label>
+            <input type="text" name="cpf" id="cpf" required maxlength="11">
+            <div class="espaço"></div>
+            <label for="endereco">Endereço</label>
+            <input type="text" name="endereço" id="endereco" required maxlength="200">
+            <div class="espaço"></div>
+            <label for="cidade">Cidade</label>
+            <input type="text" name="cidade" id="cidade" required maxlength="28">
+            <div class="espaço"></div>
+            <label for="estados">Estados</label>
+            <select name="estados" id="estados" required>
+                
+            </select>
+            <div class="espaço"></div>
+            <input type="radio" name="morada" id="casa">
+            <label for="casa">Casa</label>
+
+            <input type="radio" name="morada" id="ap">
+            <label for="apartamento">Apartamento</label>
+
+        </fieldset>
+        <fieldset>
+            <legend>resumo do suas experiencias</legend>
+            <textarea name="resume" id="resume-curriculo" cols="30" rows="10" required maxlength="1000">
+        </textarea>
+        <div class="espaço"></div>
+            <label for="cargos">Cargo</label>
+            <input type="text" name="cargos" required maxlength="40">
+            <div class="espaço"></div>
+            <label for="Dcargo">Descrição de cargos</label>
+            <input name="descrição de cargos" id="Dcargo"  required maxlength="500">
+     
+        <div class="espaço"></div>
+            <label for="data">Data de inicio</label>
+            <input type="date" name="data de inicio" id="data">
+            <div class="espaço"></div>
+
+
+        </fieldset>
+        <div class="espaço"></div>
+        <button type="submit" id="curriculo"> criar curriculo</button>
+    </form>
+    <script src="exercicio.js"></script>
+</body>
+
+</html>
