@@ -10,33 +10,33 @@ function estado() {
 
 }
 estado()
-function verificName(inputName,tamanhoMaximo) {
- let catchElement = document.querySelector(`[name = ${inputName}]`) 
-if (catchElement.value.length > tamanhoMaximo ||catchElement.value.length < 0){
-    alert(`verifique o ${inputName}`)
-}
+function verificName(inputName, tamanhoMaximo) {
+    let catchElement = document.querySelector(`[name = ${inputName}]`)
+    if (catchElement.value.length > tamanhoMaximo || catchElement.value.length < 0) {
+        alert(`verifique o ${inputName}`)
+    }
 }
 function verificNumbers(inputName) {
-    let catchElement = document.querySelector(`[name = ${inputName}]`) 
-   /* expressão para verificar se existe somente um numero no valor do input https://pt.stackoverflow.com/questions/11275/verificar-se-string-possui-apenas-n%C3%BAmeros */
-    if (isNaN(parseFloat(catchElement.value))&& !isFinite(catchElement.value)){
+    let catchElement = document.querySelector(`[name = ${inputName}]`)
+    /* expressão para verificar se existe somente um numero no valor do input https://pt.stackoverflow.com/questions/11275/verificar-se-string-possui-apenas-n%C3%BAmeros */
+    if (isNaN(parseFloat(catchElement.value)) && !isFinite(catchElement.value)) {
         alert(`verifique o ${inputName}`)
 
     }
-    
+
 }
 
 
-window.onload= () =>{
+window.onload = () => {
     const getButton = document.querySelector('#curriculo')
-    getButton.addEventListener('click',(event) =>{
+    getButton.addEventListener('click', (event) => {
         event.preventDefault()
         verificNumbers()
         verificNumbers('cpf')
-        verificName('name',40)
-        verificName('endereço',200)
-        verificName('cidade',28)
-        verificName('email',50)
+        verificName('name', 40)
+        verificName('endereço', 200)
+        verificName('cidade', 28)
+        verificName('email', 50)
 
     })
 }
