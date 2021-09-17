@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="exercicio.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" class="js-form" method="GET">
+        <fieldset>
+            <label for="name">Nome</label>
+            <input data-validate-field = 'name' type="text" name="name" id="name" required maxlength="40">
+            <div class="espaço"></div>
+            <label for="email">Email</label>
+            <input data-validate-field = 'email ' type="email" name="email" id="email" required maxlength="50">
+            <div class="espaço"></div>
+            <label for="cpf">CPF</label>
+            <input data-validate-field = 'cpf ' type="text" name="cpf" id="cpf" required maxlength="11">
+            <div class="espaço"></div>
+            <label for="endereco">Endereço</label>
+            <input data-validate-field = 'endereco' type="text" name="endereço" id="endereco" required maxlength="200">
+            <div class="espaço"></div>
+            <label for="cidade">Cidade</label>
+            <input data-validate-field = 'cidade' type="text" name="cidade" id="cidade" required maxlength="28">
+            <div class="espaço"></div>
+            <label for="estados">Estados</label>
+            <select name="estados" id="estados" required>
+                
+            </select>
+            <div class="espaço"></div>
+            <input  type="radio" name="morada" id="casa">
+            <label for="casa">Casa</label>
+
+            <input  type="radio" name="morada" id="ap">
+            <label for="apartamento">Apartamento</label>
+
+        </fieldset>
+        <fieldset>
+            <legend>resumo do suas experiencias</legend>
+            <textarea name="resume" data-validate-field = 'text' id="resume-curriculo" cols="30" rows="10" required maxlength="1000">
+        </textarea>
+        <div class="espaço"></div>
+            <label for="cargos">Cargo</label>
+            <input data-validate-field = ' ' type="text" name="cargos" id="cargo" required maxlength="40">
+            <div class="espaço"></div>
+            <label for="Dcargo">Descrição de cargos</label>
+            <input data-validate-field = ' ' name="descricao-de-carg" id="Dcargo"  required maxlength="500">
+     
+        <div class="espaço"></div>
+            <label for="data">Data de inicio</label>
+            <input data-validate-field = ' ' type="date" name="data de inicio" id="data">
+            <div class="espaço"></div>
+
+
+        </fieldset>
+        <div class="espaço"></div>
+        <button type="submit" id="curriculo"> criar curriculo</button>
+        <button type="reset" id="reset">apagar curriculo</button>
+    </form>
+    <script src="script.js" type="module"></script>
+</body>
+
+</html>
