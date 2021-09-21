@@ -1,0 +1,41 @@
+body {
+margin: 0 20px;
+padding: 0;
+background-color: thistle;
+
+}
+h1 {
+
+}
+h2 {
+
+}
+p{
+    font-size: larger;
+}
+img {
+    max-width: 100%;
+}
+
+figure {
+    margin: 90px 0;
+}
+@media (max-width:568px){
+   p{
+       font-size: medium;
+   }
+    h1 {
+font-size: larger;
+    }
+    h2 {
+        font-size: larger;
+    }
+    body{
+        margin: 0 20% 0 20%;
+        background-color: white;
+    }
+    img{
+        max-width: 100%;
+    }
+   
+}
