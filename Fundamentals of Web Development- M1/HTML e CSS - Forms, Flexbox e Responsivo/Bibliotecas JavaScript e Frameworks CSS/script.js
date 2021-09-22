@@ -9,9 +9,9 @@ window.onload = () => {
             },
             email: {
                 required: true,
+                email: true,
                 minLength: 3,
                 maxLength: 50,
-                email: true,
             },
             cidade: {
                 required: true,
@@ -37,6 +37,9 @@ window.onload = () => {
                 required: false,
                 minLength: 3,
                 maxLength: 200,
+            },
+            radioType:{
+                required: true,
             }
         },
         messages:{
@@ -44,6 +47,18 @@ window.onload = () => {
                 required: 'Coloque seu nome',
                 minLength:'Valor minimo é de 3 caracteres',
                 maxLength: 'Voce execedeu o numero maximo de caracteres'
+            },
+            email:{
+                required: 'Coloque seu email',
+                email: 'email não é valido'
+            },
+            cidade:{
+                required: 'Coloque sua Cidade e Estado logo abaixo',
+                minLength: 4,
+                maxLength: 28,
+            },
+            radioType:{
+                required: 'selecione uma das opções'
             }
         }
 
@@ -51,3 +66,9 @@ window.onload = () => {
     });
 }
 /* ESta funcionando, só implementar as regras e as mensagens  */
+
+/* função para verificar se o valor do cpf é apenas numeros  */
+function isNumber(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+isNumber(document.querySelector('#cpf').value)
