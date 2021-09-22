@@ -86,6 +86,11 @@ div .ColorBG{
     justify-content: space-around;
     
 }
+.contato{
+    border: none;
+    background-color: rgb(117, 248, 205);
+    
+}
 header a{
     font-size: medium;
 }
