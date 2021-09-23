@@ -156,16 +156,23 @@ function createDaysOfTheWeek() {
   personalT("cozinhar")
 
   /* exercicio 8 */
- let collorT = "purple"
-  function pensonalTBackColor(params) {
-   let divElement = document.createElement("div")
+/*  let collorT = "purple" */
+let divElement = document.createElement("div")
+  function pensonalTBackColor() {
    divElement.classList.add("task")
-   divElement.style.backgroundColor = params
    let dadDivElement = document.querySelector(".my-tasks") 
     dadDivElement.appendChild(divElement)
   }
-  pensonalTBackColor(collorT)
-
+  pensonalTBackColor()
+  /* bonus */
+  function changeColorRandom(params) {
+    let r =Math.floor(Math.random()*255)
+    let g =Math.floor(Math.random()*255)
+    let b =Math.floor(Math.random()*255)
+    params.style.backgroundColor =`rgb(${r},${g},${b})`
+  
+  }
+  changeColorRandom(divElement)
   /* exercicio 9 */
 
   function selectElement() {
@@ -185,20 +192,43 @@ function createDaysOfTheWeek() {
   /* exercicio 10 */
   
   function setDayColor() {
+//     capturar as duas classes, selecionada e nao selecionada, para fazer a condição     
     let selectedTask = document.getElementsByClassName('task selected');
-    let days = document.querySelector('#days');
     let taskDiv = document.querySelector('.task');
+    let days = document.querySelector('#days');
     let taskColor = taskDiv.style.backgroundColor;
     
     days.addEventListener('click', function(event){
+//       event.target usado para ver qual a cor de fonte do elemento que esta sendo clicado
       let eventTargetColor = event.target.style.color;
       if (selectedTask.length > 0 && eventTargetColor !== taskColor) {
-        let color = selectedTask[0].style.backgroundColor;
-        event.target.style.color = color;
-      } else if (eventTargetColor === taskColor && selectedTask.length !== 0) {
+        let elementColor = selectedTask[0].style.backgroundColor;
+        event.target.style.color = elementColor;
+      } else if(eventTargetColor === taskColor && selectedTask.length !== 0) {
         event.target.style.color = 'rgb(119,119,119)';
       }
     });
   };
   
   setDayColor();
+
+function creatCompromissos() {
+let divTextImput = document.querySelector(".input-container")
+let textImput = document.querySelector("#task-input")
+let button = document.getElementsByClassName("btn-add")[2]
+
+button.addEventListener("click",function (event) {
+  if(textImput.innerHTML == null ){
+    window.alert("verifique a barra")
+  }
+  else{
+  let creatList = document.createElement("ul")
+  let creatElementList = document.createElement("li")
+  divTextImput.appendChild(creatList)
+  creatList.appendChild(creatElementList)
+  creatElementList.innerHTML= textImput.event.target.innerHTML
+  }
+})
+
+}
+creatCompromissos()
