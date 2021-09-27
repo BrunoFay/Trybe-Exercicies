@@ -59,4 +59,4 @@ const orderModifier = (order) => {
 }
 console.log(orderModifier(order));
 
-  //`Ola ana silveira, entraga para ${Object.values(order)[0]},${Object.entries(order)[1]}`
+  //estava tentando usar esse metodo `Ola ana silveira, entraga para ${Object.values(order)[0]},${Object.entries(order)[1]}`
