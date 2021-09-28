@@ -5,6 +5,15 @@ main {
     display: flex;
     justify-content: space-around;
     margin-top: 100px;
+    background-color: aqua;
+    height: 300px;
+}
+#printPokemons{
+    margin-top: 10px;
+}
+#pokeImages{
+    margin-top: 20px;
+
 }
 
 #pokemons {
@@ -14,10 +23,10 @@ main {
 
 form {
     display: flex;
-    
+    margin-top: 60px;
 }
 button{
-    margin: 20px;
+    margin: 50px 20px;
     height: 30px;
 }
 form div {
@@ -28,7 +37,10 @@ form div {
 }
 
 input {
-    margin-left: 10px;
+    margin: 8px;
+}
+label{
+    margin: 9px;
 }
 
 section {
