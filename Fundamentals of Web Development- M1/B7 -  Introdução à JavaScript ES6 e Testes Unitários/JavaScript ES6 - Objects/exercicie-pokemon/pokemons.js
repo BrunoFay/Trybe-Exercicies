@@ -42,39 +42,33 @@ function selectPokemon() {
         catchCharmander.classList.add('faseSelected')
     }}
     const fase2 = (pokemon,lvl)=>{if (pokemon == 'bulbasaur' && lvl >= 16 ) {
-        catchBulbasaur.classList.remove('faseSelected')
-        catchBulbasaur.classList.add('fase1') 
-        catchIvysaur.classList.remove('fase2')
+        catchBulbasaur.classList.toggle('fase1','faseSelected')
+        catchIvysaur.classList.toggle('fase2')
         catchIvysaur.classList.add('faseSelected')
     }
 else if (pokemon == 'squartle' && lvl >= 16 ) {
-    catchSquartle.classList.remove('faseSelected')
-    catchSquartle.classList.add('fase1') 
-    catchWartotle.classList.remove('fase2')
+    catchSquartle.classList.toggle('fase1','faseSelected')
+    catchWartotle.classList.toggle('fase2')
     catchWartotle.classList.add('faseSelected')
 }
 else if (pokemon == 'charmander' && lvl >= 16 ) {
-    catchCharmander.classList.remove('faseSelected')
-    catchCharmander.classList.add('fase1') 
-    catchCharmeleon.classList.remove('fase2')
+    catchCharmander.classList.toggle('fase1','faseSelected')
+    catchCharmeleon.classList.toggle('fase2')
     catchCharmeleon.classList.add('faseSelected') 
 }}
-    const fase3 = (pokemon,lvl)=>{if (pokemon == 'bulbasaur' ) {
-        catchIvysaur.classList.remove('faseSelected')
-        catchIvysaur.classList.add('fase2') 
-        catchVenusaur.classList.remove('fase3')
+    const fase3 = (pokemon,lvl)=>{if (pokemon == 'bulbasaur' && lvl >= 36) {
+        catchIvysaur.classList.toggle('fase2','faseSelected')
+        catchVenusaur.classList.toggle('fase3')
         catchVenusaur.classList.add('faseSelected')
     }
     else if (pokemon == 'squartle' && lvl >= 36) {
-        catchWartotle.classList.remove('faseSelected')
-        catchWartotle.classList.add('fase2') 
-        catchBlastoise.classList.remove('fase3')
+        catchWartotle.classList.toggle('fase2','faseSelected')
+        catchBlastoise.classList.toggle('fase3')
         catchBlastoise.classList.add('faseSelected')
     }
     else if (pokemon == 'charmander' && lvl >= 36) {
-        catchCharmeleon.classList.remove('faseSelected')
-        catchCharmeleon.classList.add('fase2') 
-        catchCharizard.classList.remove('fase3')
+        catchCharmeleon.classList.toggle('fase2','faseSelected')
+        catchCharizard.classList.toggle('fase3')
         catchCharizard.classList.add('faseSelected')
     }}
     fase1(catchPokemon.value);
