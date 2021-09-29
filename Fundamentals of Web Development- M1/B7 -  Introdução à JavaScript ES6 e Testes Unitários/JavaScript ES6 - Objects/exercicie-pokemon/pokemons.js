@@ -85,13 +85,13 @@ function selectPokemon() {
 function printPokemon() {
   const charmanderEvolutions = () => {
     if (catchPokemon.value == 'charmander' && catchLvl.value >= 16 && catchLvl.value < 36) {
-      catchSection.innerHTML = `Nome :  charmeleon,
+      catchSection.innerHTML = `Nome :Charmeleon,
     Level:  ${catchLvl.value},
     Ataque: ${pokemons[0].Ataque},
     Defesa: ${pokemons[0].Defesa}`
     }
     else if (catchPokemon.value == 'charmander' && catchLvl.value >= 36 && catchLvl.value <= 40) {
-      catchSection.innerHTML = `Nome :  charizard,
+      catchSection.innerHTML = `Nome : Charizard,
     Level:  ${catchLvl.value},
     Ataque: ${pokemons[0].Ataque},
     Defesa: ${pokemons[0].Defesa}`
@@ -99,13 +99,13 @@ function printPokemon() {
   }
   const bulbasaurEvolutions = () => {
     if (catchPokemon.value == 'bulbasaur' && catchLvl.value >= 16 && catchLvl.value < 36) {
-      catchSection.innerHTML = `Nome :  ivysaur,
+      catchSection.innerHTML = `Nome :  Ivysaur,
     Level:  ${catchLvl.value},
     Ataque: ${pokemons[0].Ataque},
     Defesa: ${pokemons[0].Defesa}`
     }
     else if (catchPokemon.value == 'bulbasaur' && catchLvl.value >= 36 && catchLvl.value <= 40) {
-      catchSection.innerHTML = `Nome :  venusaur,
+      catchSection.innerHTML = `Nome :  Venusaur,
     Level:  ${catchLvl.value},
     Ataque: ${pokemons[0].Ataque},
     Defesa: ${pokemons[0].Defesa}`
@@ -113,13 +113,13 @@ function printPokemon() {
   }
   const squartleEvolutions = () => {
     if (catchPokemon.value == 'squartle' && catchLvl.value >= 16 && catchLvl.value < 36) {
-      catchSection.innerHTML = `Nome :  wartortle,
+      catchSection.innerHTML = `Nome :Wartortle,
     Level:  ${catchLvl.value},
     Ataque: ${pokemons[0].Ataque},
     Defesa: ${pokemons[0].Defesa}`
     }
     else if (catchPokemon.value == 'squartle' && catchLvl.value >= 36 && catchLvl.value <= 40) {
-      catchSection.innerHTML = `Nome :  blastoise,
+      catchSection.innerHTML = `Nome : Blastoise,
     Level:  ${catchLvl.value},
     Ataque: ${pokemons[0].Ataque},
     Defesa: ${pokemons[0].Defesa}`
