@@ -7,9 +7,9 @@ const newEmployees = (fullName) => {
     return employees;
 
   };
-  const np = (fullName)=>{ 
-  const email =`${fullName.toLowerCase().split(' ').join('_')}@trybe.com`;
+  const fullName = (fullName)=>{ 
+  const email =`${fullName.toLowerCase().replace(' ','_')}@trybe.com`;
   return {fullName,email}
   }
-  console.log(newEmployees(np));
+  console.log(newEmployees(fullName));
   
