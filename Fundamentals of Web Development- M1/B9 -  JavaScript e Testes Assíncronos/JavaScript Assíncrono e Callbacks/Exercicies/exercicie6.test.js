@@ -1,2 +1,7 @@
-const {getPokemonDetails, pokemons} = require('../Exercicies/exercicie6')
+const {getPokemonDetails, pokemons} = require(newFunction())
 console.log(pokemons);
+
+function newFunction() {
+    return '../Exercicies/exercicie6';
+}
+ 

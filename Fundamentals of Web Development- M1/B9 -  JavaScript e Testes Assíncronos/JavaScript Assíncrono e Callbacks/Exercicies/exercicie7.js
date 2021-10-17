@@ -3,3 +3,10 @@ const uppercase = (str, callback) => {
       callback(str.toUpperCase());
     }, 500);
   };
+  console.log(uppercase('btugse',uppercase));
+  
+  
+  
+  module.exports ={
+    uppercase()
+  }
