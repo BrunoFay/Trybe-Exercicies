@@ -35,7 +35,7 @@ form {
     background-color: rgb(146, 226, 226);
     height: 180px;
     border-radius: 5px;
-    
+    box-shadow: 2px 2px 2px 2px; 
 }
 button{
     margin: 80px 20px;
@@ -68,7 +68,7 @@ section {
     color: rgb(11, 18, 37);
     height: 20px;
     border-radius: 4px;
-       
+    
 }
 
 .fase1, .fase2, .fase3 {
