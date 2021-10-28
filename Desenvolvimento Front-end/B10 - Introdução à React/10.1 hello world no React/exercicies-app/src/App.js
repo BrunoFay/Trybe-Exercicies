@@ -1,5 +1,7 @@
 
 import './App.css';
+import Header from './Header';
+import Content from './Content';
 const Task = (value) => {
   return (
     <li>{value}</li>
@@ -12,8 +14,11 @@ function App() {
     <>
         <p>
           {Task('djonga')}
+          {Header}
+          
          </p> 
       
+    {Content}
     <ul>
     {mcs.map((mc)=>Task(mc))}
     </ul>
