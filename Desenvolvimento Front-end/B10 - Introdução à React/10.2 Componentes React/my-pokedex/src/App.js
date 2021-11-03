@@ -10,7 +10,7 @@ function App() {
       
 
 
-      <Pokemons className="App" pokemons={pokemons}/>
+      <Pokemons className="App" param={pokemons}/>
     </section>
 
    </main>
