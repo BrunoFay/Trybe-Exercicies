@@ -5,44 +5,26 @@ class Form extends Component {
     constructor() {
         super();
 
-        this.handleChangeTextArea = this.handleChangeTextArea.bind(this);
-        this.handleChangeInputIdade = this.handleChangeInputIdade.bind(this);
-        this.handleChangeCheckBox = this.handleChangeCheckBox.bind(this);
-        this.handleChangeSelect = this.handleChangeSelect.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    
         this.state = {
             estadoFavorito: '',
-            inputIdade: 0,
-            vaiAparecer:false,
+            idade: 0,
+            vaiComparecer:false,
             select: ''
         };
     }
 
 
-    handleChangeTextArea(event) {
+    handleChange({target}) {
+        const {name}= target
+        const value =target.type === 'checkbox'?target.checked:target.value;
         this.setState({
-            estadoFavorito: event.target.value,
+            [name]: value,
+         
         });
     }
-    handleChangeInputIdade(event){
-        this.setState({
-            inputIdade: event.target.value,
-            
-        })
-    }
-    
-    handleChangeCheckBox(event){
-        this.setState({
-            vaiAparecer: event.target = true
-            
-        })
-    }
-    
-    handleChangeSelect(event){
-        this.setState({
-            select: event.target.value,
-            
-        })
-    }
+   
     
 
     render() {
@@ -52,24 +34,25 @@ class Form extends Component {
                 <form className="form">
                     <label>
                         Diga qual o seu Estado favorito! De React ou do Brasil, você decide! =)
-                        <textarea name="estadoFavorito" value={this.state.estadoFavorito} onChange={this.handleChangeTextArea} />
+                        <textarea name="estadoFavorito" value={this.state.estadoFavorito} onChange={this.handleChange} />
                     </label>
                     <input
                         type="number"
                         name="idade"
-                        onChange={this.handleChangeInputIdade}
+                        onChange={this.handleChange}
                     />
                     <input
                         type="checkbox"
                         name="vaiComparecer"
-                        onClick={this.handleChangeCheckBox}
+                        onClick={this.handleChange}
                     />
-                    <select  onClick={this.handleChangeSelect}>
+                    <select name='select' onClick={this.handleChange}>
                         <option>choice</option>
                         <option>bill</option>
                         <option>dk47</option>
                         <option>sintese</option>
                     </select>
+                    <input type="file" />
                 </form>
             </div>
         );
