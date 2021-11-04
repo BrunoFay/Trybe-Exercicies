@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Input from './input';
+import Select from './Select';
 
 
 class Form extends Component {
@@ -6,26 +8,26 @@ class Form extends Component {
         super();
 
         this.handleChange = this.handleChange.bind(this);
-    
+
         this.state = {
             estadoFavorito: '',
             idade: 0,
-            vaiComparecer:false,
+            vaiComparecer: false,
             select: ''
         };
     }
 
 
-    handleChange({target}) {
-        const {name}= target
-        const value =target.type === 'checkbox'?target.checked:target.value;
+    handleChange({ target }) {
+        const { name } = target
+        const value = target.type === 'checkbox' ? target.checked : target.value;
         this.setState({
             [name]: value,
-         
+
         });
     }
-   
-    
+
+
 
     render() {
         return (
@@ -36,22 +38,19 @@ class Form extends Component {
                         Diga qual o seu Estado favorito! De React ou do Brasil, você decide! =)
                         <textarea name="estadoFavorito" value={this.state.estadoFavorito} onChange={this.handleChange} />
                     </label>
-                    <input
+                   
+                    <Input
                         type="number"
                         name="idade"
-                        onChange={this.handleChange}
+                        handleChange={this.handleChange}
                     />
-                    <input
+                    <Input
                         type="checkbox"
                         name="vaiComparecer"
-                        onClick={this.handleChange}
+                        handleChange={this.handleChange}
                     />
-                    <select name='select' onClick={this.handleChange}>
-                        <option>choice</option>
-                        <option>bill</option>
-                        <option>dk47</option>
-                        <option>sintese</option>
-                    </select>
+                    <Select name='select' handleChange={this.handleChange}/>
+                      
                     <input type="file" />
                 </form>
             </div>
