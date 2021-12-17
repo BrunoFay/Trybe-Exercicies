@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    #container {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    button {
+      height: 50px;
+      width: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <p>Color: <span id="value">white</span></p>
+    <button id="previous">Previous color</button>
+    <button id="next">Next color</button>
+    <button id='random'>Ramdom color</button>
+  </div>
+  <script>
+    function criarCor() {
+      const oneChar = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+      let cor = '#';
+      const aleatorio = () => Math.floor(Math.random() * oneChar.length);
+      for (let i = 0; i < 6; i += 1) {
+        cor += oneChar[aleatorio()];
+      }
+      return cor;
+    }
+
+    const ESTADO_INICIAL = {
+      colors: ['white', 'black', 'red', 'green', 'blue', 'yellow'],
+      index: 0,
+    };
+    let LAST_ARRAY_POSITION = 5
+    const FIRST_ARRAY_POSITION = 0
+
+    const reducer = (state = ESTADO_INICIAL, action) => {
+      switch (action.type) {
+        case 'NEXT_COLOR':
+          return {
+            ...state,
+            index: state.index < LAST_ARRAY_POSITION ? state.index + 1 : LAST_ARRAY_POSITION
+          }
+        case 'PREVIOUS_COLOR':
+          return {
+            ...state,
+            index: state.index > FIRST_ARRAY_POSITION ? state.index - 1 : FIRST_ARRAY_POSITION
+          }
+        case 'RAMDOM_COLOR':
+          LAST_ARRAY_POSITION += 1
+          return {
+            ...state,
+            colors: state.colors.concat(criarCor()),
+          }
+
+        default:
+          return state
+
+      }
+    }
+
+    const store = Redux.createStore(reducer)
+    // buttons
+    const nextColor = document.getElementById('next')
+    const previousColor = document.getElementById('previous')
+    const randomColor = document.getElementById('random')
+    randomColor.addEventListener('click', () =>
+      store.dispatch({ type: 'RAMDOM_COLOR' })
+    )
+    nextColor.addEventListener('click', () =>
+      store.dispatch({ type: 'NEXT_COLOR' })
+    )
+    previousColor.addEventListener('click', () =>
+      store.dispatch({ type: 'PREVIOUS_COLOR' })
+
+    )
+
+    store.subscribe(() => {
+      const span = document.getElementById('value')
+      const div = document.getElementById('container')
+      const { colors, index } = store.getState()
+      //console.log(colors[index]);
+      div.style.background = colors[index]
+      colors[index] === 'black' ? div.style.color = 'white' : div.style.color = 'black'
+      span.innerHTML = colors[index]
+      console.log(store.getState());
+    });
+  </script>
+</body>
+
+</html>
