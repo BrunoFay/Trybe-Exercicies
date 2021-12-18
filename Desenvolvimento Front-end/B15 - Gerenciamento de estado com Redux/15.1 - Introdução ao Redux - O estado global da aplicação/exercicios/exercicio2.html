@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+</head>
+
+<body>
+    <button onclick={changeN()}>chance names</button>
+    <div id="container">
+        <h1>Informações do primeiro Reducer:</h1>
+        <p>Nome: <span id="nome-1">Rodrigo</span></p>
+        <p>Sobrenome: <span id="sobrenome-1">Santos da Silva</span></p>
+        <p>Endereço: <span id="endereco-1">Rua Soldado Mathias, 765</span></p>
+        <p>Cidade: <span id="cidade-1">Belo Horizonte</span></p>
+    </div>
+    <div id="container">
+        <h1>Informações do segundo Reducer:</h1>
+        <p>Nome: <span id="nome-2">Bruna</span></p>
+        <p>Sobrenome: <span id="sobrenome-2">Santana Oliveira</span></p>
+        <p>Endereço: <span id="endereco-2">Rua Holanda, 332</span></p>
+        <p>Cidade: <span id="cidade-2">São Paulo</span></p>
+    </div>
+    <script>
+
+
+        const ESTADO_INICIAL_1 = {
+            nome: 'Rodrigo',
+            sobrenome: 'Santos da Silva',
+            endereco: 'Rua Soldado Mathias, 765',
+            cidade: 'Belo Horizonte',
+        };
+
+        const ESTADO_INICIAL_2 = {
+            nome: 'Bruna',
+            sobrenome: 'Santana Oliveira',
+            endereco: 'Rua Holanda, 332',
+            cidade: 'São Paulo',
+        };
+
+        const meuPrimeiroReducer = (state = ESTADO_INICIAL_1, action) => {
+            switch (action.type) {
+                case 'NAME_FIRST_PERSON':
+                    return { ...state, nome: 'james' }
+                case 'LASTNAME_FIRST_PERSON':
+                    return { ...state, sobrenome: 'Blont' }
+                case 'CITY_FIRST_PERSON':
+                    return { ...state, cidade: 'porto alegre' }
+                default:
+                    return state;
+            }
+        };
+
+        const meuSegundoReducer = (state = ESTADO_INICIAL_2, action) => {
+            switch (action.type) {
+                case 'NAME_SECOND_PERSON':
+                    return { ...state, nome: 'willow' }
+
+                case 'LASTNAME_SECOND_PERSON':
+                    return { ...state, sobrenome: 'Smith' }
+
+                case 'CITY_SECOND_PERSON':
+                    return { ...state, cidade: 'queens' }
+                default:
+                    return state;
+            }
+        };
+
+        const { combineReducers, createStore } = Redux
+        const allReducers = combineReducers({
+            meuPrimeiroReducer,
+            meuSegundoReducer
+        })
+        //criei um array com o nome das actions q ia disparar e usei o forEach para disparar cada um dinamicamente e acabei usando a mesma ideia para escrever no html dinamicamente
+        const changeN = () => {
+            const actionsType =
+                ['NAME_FIRST_PERSON', 'LASTNAME_FIRST_PERSON', 'NAME_SECOND_PERSON', 'LASTNAME_SECOND_PERSON']
+                    .forEach((action) => store.dispatch({ type: action }))
+            const {
+                meuPrimeiroReducer: { nome, sobrenome },
+                meuSegundoReducer: { nome: nome2, sobrenome: sobrenome2 }
+            } = store.getState()
+            const actionsToDom = [nome, sobrenome, nome2, sobrenome2]
+            const ids = ['nome-1', 'sobrenome-1', 'nome-2', 'sobrenome-2']
+                .forEach((tag, i) => document.getElementById(tag).innerHTML = actionsToDom[i])
+            return
+        }
+        const store = createStore(allReducers)
+        //não esquecer de usar o objeto com o type quando for usar o dispatch
+        window.onload = () => {
+            setTimeout(() => {
+                const setTimeActionsType = ['CITY_FIRST_PERSON', 'CITY_SECOND_PERSON']
+                    .forEach(action => store.dispatch({ type: action }))
+                const {
+                    meuPrimeiroReducer: { cidade },
+                    meuSegundoReducer: { cidade: cidade2 }
+                } = store.getState()
+                const citys = [cidade, cidade2]
+                const cityIds = ['cidade-1', 'cidade-2'].forEach((tag, i) => document.getElementById(tag).innerHTML = citys[i])
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>
