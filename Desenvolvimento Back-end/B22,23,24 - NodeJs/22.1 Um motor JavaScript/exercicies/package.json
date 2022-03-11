@@ -8,7 +8,9 @@
     "start":"node index.js",
     "imc":"node index.js",
     "velocidade":"node velocidade.js",
-    "sorteio":"node sorteio.js"
+    "sorteio":"node sorteio.js",
+    "scr":"node scriptList.js",
+    "bn1":"node bonus1.js"
   },
   "author": "brunofay",
   "license": "ISC",
