@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start":"node index.js",
     "imc":"node index.js",
-    "velocidade":"node velocidade.js"
+    "velocidade":"node velocidade.js",
+    "sorteio":"node sorteio.js"
   },
   "author": "brunofay",
   "license": "ISC",
