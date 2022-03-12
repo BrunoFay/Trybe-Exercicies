@@ -10,7 +10,8 @@
     "velocidade":"node velocidade.js",
     "sorteio":"node sorteio.js",
     "scr":"node scriptList.js",
-    "bn1":"node bonus1.js"
+    "bn1":"node bonus1.js",
+    "bn2":"node bonus2.js"
   },
   "author": "brunofay",
   "license": "ISC",
