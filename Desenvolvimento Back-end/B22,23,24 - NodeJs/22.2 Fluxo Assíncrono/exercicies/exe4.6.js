@@ -10,9 +10,8 @@ async function replaceNelsonFromSimpsonsJson() {
     else {
       return ({ id, name })
     }
-  }
-  )
-
+  })
+await fn.writeFile('./simpsons.json',JSON.stringify(newSimpsonsArray))
   console.log(newSimpsonsArray);
 }
 try {
