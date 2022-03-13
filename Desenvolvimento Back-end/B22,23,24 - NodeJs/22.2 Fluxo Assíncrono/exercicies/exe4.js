@@ -1,4 +1,4 @@
-const fs = require('fs').promises
+const fs = require('./index.js');
 
 async function main() {
   const simpsonsFile = await fs.readFile('./simpsons.json', 'utf-8')

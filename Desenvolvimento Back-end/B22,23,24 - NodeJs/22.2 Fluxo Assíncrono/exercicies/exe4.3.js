@@ -1,4 +1,4 @@
-//3
+const fs = require('./index.js');
 // my answer
 async function main() {
   const simpsonsFile = fs.readFile('./simpsons.json', 'utf8') 
@@ -10,7 +10,7 @@ async function main() {
   }
     main()
   // trybe answer
-   const fs = require('fs').promises;
+
   
    async function filterSimpsons() {
      const simpsons = await fs

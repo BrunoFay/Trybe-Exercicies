@@ -11,7 +11,7 @@ async function mathForm(one, two, three) {
 }
 async function main() {
   try {
-    /* await mathForm() */
+     await mathForm() 
 
   }
   catch (error) {
@@ -19,7 +19,7 @@ async function main() {
   }
 
 }
-/* main(); */
+ main(); 
 
 module.exports = {
   function: mathForm,

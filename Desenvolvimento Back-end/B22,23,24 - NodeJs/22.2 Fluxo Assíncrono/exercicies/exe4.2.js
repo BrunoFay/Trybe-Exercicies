@@ -1,4 +1,4 @@
-const fs = require('fs').promises;
+
 const arraysimpsonsFile= JSON.parse(simpsonsFile) 
 async function getSimpsomById(id){
    const checkSimpsonsId =arraysimpsonsFile.filter((simp)=>simp.id == id)
