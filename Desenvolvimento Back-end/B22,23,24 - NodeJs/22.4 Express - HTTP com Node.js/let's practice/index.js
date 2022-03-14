@@ -30,23 +30,37 @@ app.listen(3002, () => {
 });
 
 
-app.get('/drinks',(req ,res) =>{
-res.json(drinks.sort((a, b) => (a.name > b.name) ? 1 : -1))
+app.get('/drinks', (req, res) => {
+  res.json(drinks.sort((a, b) => (a.name > b.name) ? 1 : -1))
 })
 
+
+
+app.get('/recipes/search', function (req, res) {
+  const { name, maxPrice,minPrice } = req.query;
+  const filteredRecipes = recipes
+    .filter((r) => r.name.includes(name) &&
+      (r.price < Number(maxPrice) || r.price >= Number(minPrice)));
+  res.status(200).json(filteredRecipes);
+})
+app.get('/drinks/search',(req,res)=>{
+  const { name }= req.query
+  const filteredDrinks = drinks
+  .filter((d) => d.name.includes(name));
+  res.status(200).json(filteredDrinks)
+})
 
 app.get('/recipes/:id', function (req, res) {
   const { id } = req.params;
   const recipe = recipes.find((r) => r.id === Number(id));
 
-  if (!recipe) return res.status(404).json({ message: 'Recipe not found!'});
+  if (!recipe) return res.status(404).json({ message: 'Recipe not found!' });
 
   res.status(200).json(recipe);
 });
-
-app.get('/drinks/:id',(req,res) =>{
-  const{id}=req.params
-  const drink = drinks.find(d=>d.id === Number(id))
-  if(!drink) return res.status(404).json({message:'drink not found'})
+app.get('/drinks/:id', (req, res) => {
+  const { id } = req.params
+  const drink = drinks.find(d => d.id === Number(id))
+  if (!drink) return res.status(404).json({ message: 'drink not found' })
   res.status(200).json(drink)
-} )
+})
