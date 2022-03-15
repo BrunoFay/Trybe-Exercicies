@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const json = require('body-parser/lib/types/json');
 const app = express();
 
 app.use(cors());
@@ -76,5 +77,68 @@ app.post('/recipes', function (req, res) {
 app.post('/drinks', (req, res) => {
   const { id, name, price } = req.body
   drinks.push({ id, name, price })
-  res.status(201).json({ message:'drink created successfully'})
+  res.status(201).json({ message: 'drink created successfully' })
+})
+
+
+// token validation exemple
+
+
+app.get('/validateToken', function (req, res) {
+  const token = req.headers.authorization;
+  if (token.length !== 16) return res.status(401).json({ message: 'Invalid Token!' });
+
+  res.status(200).json({ message: 'Valid Token!' })
+});
+
+
+// put method
+
+
+app.put('/recipes/:id', function (req, res) {
+  const { id } = req.params;
+  const { name, price } = req.body;
+  const recipeIndex = recipes.findIndex((r) => r.id === parseInt(id));
+
+  if (recipeIndex === -1) return res.status(404).json({ message: 'Recipe not found!' });
+
+  recipes[recipeIndex] = { ...recipes[recipeIndex], name, price };
+
+  res.status(204).end();
+});
+
+app.put('/drinks/:id', (req, res) => {
+  const { id } = req.params
+  const { name } = req.body
+  const drinkIndex = drinks.findIndex((d) => d.id === Number(id))
+  if (drinkIndex === -1) return res.status(404); json({ message: 'Drink not found' })
+  drinks[drinkIndex] = { ...drinks[drinkIndex], name }
+  res.status(204).end
+})
+
+
+// delete method
+
+
+
+
+app.delete('/recipes/:id', function (req, res) {
+  const { id } = req.params;
+  const recipeIndex = recipes.findIndex((r) => r.id === parseInt(id));
+
+  if (recipeIndex === -1) return res.status(404).json({ message: 'Recipe not found!' });
+
+  recipes.splice(recipeIndex, 1);
+
+  res.status(204).end();
+});
+
+
+
+app.delete('/drinks/:id',(req,res)=>{
+  const { id } =req.params
+  const drinkIndex= drinks.indexOf((d)=>d.id === Number(id))
+  if(drinkIndex === -1) return res.status(404).json({message:'Drink not found'})
+  drinks.splice(drinkIndex,1)
+  res.status(204).end()
 })
