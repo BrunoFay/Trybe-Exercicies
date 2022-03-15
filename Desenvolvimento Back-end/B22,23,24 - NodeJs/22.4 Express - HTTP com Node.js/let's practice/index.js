@@ -1,8 +1,10 @@
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 const app = express();
 
 app.use(cors());
+app.use(bodyParser.json())
 
 const recipes = [
   { id: 1, name: 'Lasanha', price: 40.0, waitTime: 30 },
@@ -13,9 +15,6 @@ const recipes = [
 app.get('/recipes', function (req, res) {
   res.json(recipes);
 });
-
-
-
 
 const drinks = [
   { id: 1, name: 'Refrigerante Lata', price: 5.0 },
@@ -35,18 +34,18 @@ app.get('/drinks', (req, res) => {
 })
 
 
-
+/* query string need to be before others params methods */
 app.get('/recipes/search', function (req, res) {
-  const { name, maxPrice,minPrice } = req.query;
+  const { name, maxPrice, minPrice } = req.query;
   const filteredRecipes = recipes
     .filter((r) => r.name.includes(name) &&
       (r.price < Number(maxPrice) || r.price >= Number(minPrice)));
   res.status(200).json(filteredRecipes);
 })
-app.get('/drinks/search',(req,res)=>{
-  const { name }= req.query
+app.get('/drinks/search', (req, res) => {
+  const { name } = req.query
   const filteredDrinks = drinks
-  .filter((d) => d.name.includes(name));
+    .filter((d) => d.name.includes(name));
   res.status(200).json(filteredDrinks)
 })
 
@@ -58,9 +57,24 @@ app.get('/recipes/:id', function (req, res) {
 
   res.status(200).json(recipe);
 });
+
 app.get('/drinks/:id', (req, res) => {
   const { id } = req.params
   const drink = drinks.find(d => d.id === Number(id))
   if (!drink) return res.status(404).json({ message: 'drink not found' })
   res.status(200).json(drink)
+})
+
+
+// ...
+app.post('/recipes', function (req, res) {
+  const { id, name, price } = req.body;
+  recipes.push({ id, name, price });
+  res.status(201).json({ message: 'Recipe created successfully!' });
+});
+
+app.post('/drinks', (req, res) => {
+  const { id, name, price } = req.body
+  drinks.push({ id, name, price })
+  res.status(201).json({ message:'drink created successfully'})
 })
