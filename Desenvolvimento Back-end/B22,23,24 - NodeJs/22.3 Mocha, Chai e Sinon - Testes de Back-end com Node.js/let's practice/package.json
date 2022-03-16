@@ -1,0 +1,12 @@
+{
+  "name": "let's-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha calculaSituacao"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
