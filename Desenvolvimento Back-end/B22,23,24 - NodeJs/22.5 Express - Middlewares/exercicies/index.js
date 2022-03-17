@@ -1,23 +1,38 @@
 const express = require('express')
 const { StatusCodes } = require('http-status-codes')
-const { validationLogin } = require('./controllerMiddlewareEmail')
+const {
+  usernameValidate,
+  emailValidate,
+  passwordValidate,
+  tokenValidate
+} = require('./controllerMiddlewareEmail')
+const fetch = require('./fetch')
 const app = express()
 
 app.use(express.json())
 app.listen(6000, () => { console.log('server up!') })
 
-app.post('/user/register', (req, res) => {
-  const { username, email, password } = req.body
-  const usernameValidate = username.length > 3
-  validationLogin(email, password, usernameValidate)
-  res.status(StatusCodes.UNAUTHORIZED).json({ "message": "invalid data" })
+app.post('/user/register', [
+  usernameValidate,
+  emailValidate,
+  passwordValidate], (req, res) => {
+    res.status(StatusCodes.ACCEPTED).json({ "message": "user registred" })
+  })
+
+app.post('/user/login',
+  emailValidate,
+  passwordValidate, (req, res) => {
+    res.status(StatusCodes.ACCEPTED).json({ "message": "user loged" })
+  })
+
+app.get('/btc/price', (req, res) => {
+  const token = req.headers.authorization
+  if (token.length !== 13) {
+    return res.status(StatusCodes.BAD_REQUEST).json()
+  }
+  fetch()
+  res.status(StatusCodes.ACCEPTED).end()
 })
 
-app.post('/user/login', (req, res) => {
-  const { email, password } = req.body
-  validationLogin(email, password)
 
-  res.status(StatusCodes.BAD_REQUEST).end()
-})
 
-app.get('/btc/price',(req,res)=>{})
