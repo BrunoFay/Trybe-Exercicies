@@ -25,14 +25,5 @@ app.post('/user/login',
     res.status(StatusCodes.ACCEPTED).json({ "message": "user loged" })
   })
 
-app.get('/btc/price', (req, res) => {
-  const token = req.headers.authorization
-  if (token.length !== 13) {
-    return res.status(StatusCodes.BAD_REQUEST).json()
-  }
-  fetch()
-  res.status(StatusCodes.ACCEPTED).end()
-})
-
 
 
