@@ -1,14 +1,23 @@
 const express = require('express')
+const { StatusCodes } = require('http-status-codes')
+const { validationLogin } = require('./controllerMiddlewareEmail')
 const app = express()
+
 app.use(express.json())
 app.listen(6000, () => { console.log('server up!') })
+
 app.post('/user/register', (req, res) => {
   const { username, email, password } = req.body
-  const regex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
-  const emailValidate = regex.test(email)
-  const passwordValidate = (password.length < 8 && password.length > 3) ? true : false
-  if (username.length > 3 && emailValidate && passwordValidate) {
-    return res.status(201).json({ "message": "user created" })
-  }
-   res.status(400).json( { "message": "invalid data" } )
+  const usernameValidate = username.length > 3
+  validationLogin(email, password, usernameValidate)
+  res.status(StatusCodes.UNAUTHORIZED).json({ "message": "invalid data" })
 })
+
+app.post('/user/login', (req, res) => {
+  const { email, password } = req.body
+  validationLogin(email, password)
+
+  res.status(StatusCodes.BAD_REQUEST).end()
+})
+
+app.get('/btc/price',(req,res)=>{})
