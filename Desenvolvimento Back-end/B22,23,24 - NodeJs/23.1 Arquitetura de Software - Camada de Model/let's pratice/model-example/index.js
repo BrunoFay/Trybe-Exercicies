@@ -3,76 +3,24 @@
 const express = require('express');
 const Author = require('./models/Author');
 const Book = require('./models/Book');
-const User = require('./models/User')
+const UserController =require('./controlers/User')
+const Middleware= require('./middlewares')
 const { StatusCodes } = require('http-status-codes')
 const app = express();
 app.use(express.json())
 
 const PORT = process.env.PORT || 3000;
 
-app.get('/users', async (req, res) => {
-  await User.createUserTable()
-  const users = await User.getAllUsers()
-  res.status(StatusCodes.OK).json(users)
+app.get('/users',UserController.getAllUser)
 
-})
+app.get('/users/:id',Middleware.checkUserIdExist,UserController.getUserById)
 
-app.get('/users/:id', async (req, res) => {
-  const { id } = req.params
-  const user = await User.getUserById(id)
-  if (!user.length) return res.status(StatusCodes.NOT_FOUND).json({
-    "error": true,
-    "message": "Usuário não encontrado"
-  })
-  await User.createUserTable()
-  res.status(StatusCodes.OK).json(user)
-})
+app.post('/users',Middleware.validateData,UserController.addNewUser)
 
-app.post('/users', async (req, res) => {
-  const {
-    firstName,
-    lastName,
-    email,
-    password } = req.body
-  if (!firstName || !lastName || !email || !password) {
-    return res.status(StatusCodes.NOT_ACCEPTABLE)
-      .json({
-        "error": true,
-        "message": "verifique os campos"
-      })
-  }
-  if (password.length < 6) {
-    return res.status(StatusCodes.NOT_ACCEPTABLE).json({
-      "error": true,
-      "message": "O campo 'password' deve ter pelo menos 6 caracteres"
-    })
-  }
-  const userCreated = await User.createNewUser(email, password, firstName, lastName)
-  res.status(StatusCodes.CREATED).json(userCreated)
-})
-
-app.put('/users/:id', async (req, res) => {
-  const { id } = req.params
-  const {
-    firstName,
-    lastName,
-    email,
-    password } = req.body
-  const userObject = {
-    id,
-    firstName,
-    lastName,
-    email,
-    password
-  }
-  const getUserId = await User.getUserById(id)
-  if (!getUserId.length) return res.status(StatusCodes.NOT_FOUND).json({
-    "error": true,
-    "message": "Usuário não encontrado"
-  })
-   await User.editUserById(userObject)
-  res.status(StatusCodes.ACCEPTED).json(userObject)
-})
+app.put('/users/:id',
+Middleware.validateData,
+Middleware.checkUserIdExist,
+UserController.editNewUser )
 
 
 app.get('/authors', async (_req, res) => {
