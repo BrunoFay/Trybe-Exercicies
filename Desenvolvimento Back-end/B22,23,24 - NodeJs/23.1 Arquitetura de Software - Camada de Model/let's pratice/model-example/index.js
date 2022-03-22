@@ -19,10 +19,13 @@ app.get('/users', async (req, res) => {
 
 app.get('/users/:id', async (req, res) => {
   const { id } = req.params
+  const user = await User.getUserById(id)
+  if (!user.length) return res.status(StatusCodes.NOT_FOUND).json({
+    "error": true,
+    "message": "Usuário não encontrado"
+  })
   await User.createUserTable()
-  const users = await User.getAllUsers()
-  res.status(StatusCodes.OK).json(users)
-
+  res.status(StatusCodes.OK).json(user)
 })
 
 app.post('/users', async (req, res) => {
@@ -35,12 +38,42 @@ app.post('/users', async (req, res) => {
     return res.status(StatusCodes.NOT_ACCEPTABLE)
       .json({
         "error": true,
-        "message": "O campo 'password' deve ter pelo menos 6 caracteres"
+        "message": "verifique os campos"
       })
+  }
+  if (password.length < 6) {
+    return res.status(StatusCodes.NOT_ACCEPTABLE).json({
+      "error": true,
+      "message": "O campo 'password' deve ter pelo menos 6 caracteres"
+    })
   }
   const userCreated = await User.createNewUser(email, password, firstName, lastName)
   res.status(StatusCodes.CREATED).json(userCreated)
 })
+
+app.put('/users/:id', async (req, res) => {
+  const { id } = req.params
+  const {
+    firstName,
+    lastName,
+    email,
+    password } = req.body
+  const userObject = {
+    id,
+    firstName,
+    lastName,
+    email,
+    password
+  }
+  const getUserId = await User.getUserById(id)
+  if (!getUserId.length) return res.status(StatusCodes.NOT_FOUND).json({
+    "error": true,
+    "message": "Usuário não encontrado"
+  })
+   await User.editUserById(userObject)
+  res.status(StatusCodes.ACCEPTED).json(userObject)
+})
+
 
 app.get('/authors', async (_req, res) => {
   const authors = await Author.getAll();
