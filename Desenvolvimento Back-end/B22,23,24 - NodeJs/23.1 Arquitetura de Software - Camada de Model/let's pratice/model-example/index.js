@@ -3,9 +3,44 @@
 const express = require('express');
 const Author = require('./models/Author');
 const Book = require('./models/Book');
+const User = require('./models/User')
+const { StatusCodes } = require('http-status-codes')
 const app = express();
 app.use(express.json())
+
 const PORT = process.env.PORT || 3000;
+
+app.get('/users', async (req, res) => {
+  await User.createUserTable()
+  const users = await User.getAllUsers()
+  res.status(StatusCodes.OK).json(users)
+
+})
+
+app.get('/users/:id', async (req, res) => {
+  const { id } = req.params
+  await User.createUserTable()
+  const users = await User.getAllUsers()
+  res.status(StatusCodes.OK).json(users)
+
+})
+
+app.post('/users', async (req, res) => {
+  const {
+    firstName,
+    lastName,
+    email,
+    password } = req.body
+  if (!firstName || !lastName || !email || !password) {
+    return res.status(StatusCodes.NOT_ACCEPTABLE)
+      .json({
+        "error": true,
+        "message": "O campo 'password' deve ter pelo menos 6 caracteres"
+      })
+  }
+  const userCreated = await User.createNewUser(email, password, firstName, lastName)
+  res.status(StatusCodes.CREATED).json(userCreated)
+})
 
 app.get('/authors', async (_req, res) => {
   const authors = await Author.getAll();
