@@ -1,4 +1,4 @@
-require('dotenv').config();
+const env= require('dotenv').config();
 const express = require('express')
 const bodyParser = require('body-parser')
 const { StatusCodes } = require('http-status-codes')
@@ -6,7 +6,7 @@ const controller = require('./controllers/cepController')
 const validateCep = require('./middleware/validateCep')
 const app = express()
 const PORT = 2020
-
+app.use(env)
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
