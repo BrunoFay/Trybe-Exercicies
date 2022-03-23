@@ -2,10 +2,7 @@ const CepModel = require('../models/cepModel')
 
 const getCepByParams = async (cep) => {
 const cepDbFormat = cep.replace('-', '')
-  const cepRegex = /^\d{5}-?\d{3}$/
-  if (!cepRegex.test(cep)) {
-    return { "error": { "code": "invalidData", "message": "CEP inválido" } }
-  }
+ 
   const foundCep = await CepModel.getCepByParams(cepDbFormat)
 
   if (!foundCep) {
@@ -16,10 +13,6 @@ const cepDbFormat = cep.replace('-', '')
 
 const createCep = async (cep, logradouro, bairro, localidade, uf) => {
  const cepDbFormat = cep.replace('-', '') 
- const cepRegex = /^\d{5}-?\d{3}$/;
- if (!cepRegex.test(cep)) {
-   return { "error": { "code": "invalidData", "message": "CEP inválido" } }
-  }
   const foundCep = await CepModel.getCepByParams(cepDbFormat)
   if (foundCep.length > 0) {
     return { "error": { "code": "alreadyExists", "message": "CEP já cadastrado" } }
