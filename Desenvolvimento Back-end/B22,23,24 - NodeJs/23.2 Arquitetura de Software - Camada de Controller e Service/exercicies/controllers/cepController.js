@@ -36,3 +36,4 @@ const createCep = rescue(async(req, res,next) => {
 })
 
 module.exports = { getCepByParams, createCep }
+
