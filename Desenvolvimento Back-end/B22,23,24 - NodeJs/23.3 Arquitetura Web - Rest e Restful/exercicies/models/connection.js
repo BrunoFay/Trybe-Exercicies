@@ -1,4 +1,5 @@
 const mysql = require('mysql2/promise');
+require('dotenv').config();
 
 const connection = mysql.createPool({
   host: 'localhost', // Se necessário, substitua pelo seu host, `localhost` é o comum

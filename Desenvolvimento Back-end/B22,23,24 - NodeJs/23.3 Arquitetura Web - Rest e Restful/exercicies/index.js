@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const productRoute =require('./controllers/productController')
-requeri('dotenv').config();
+require('dotenv').config();
 
 const app = express();
 
