@@ -2,7 +2,7 @@ const CepModel = require('../models/cepModel')
 const ApiViaCepModel = require('../models/apiViaCep')
 
 const getCepByParams = async (cep) => {
-  const cepDbFormat = cep.replace('-', '')
+  const cepDbFormat = cep.replaceAll('-', '')
 
   const foundCep = await CepModel.getCepByParams(cepDbFormat)
   if (foundCep) {
