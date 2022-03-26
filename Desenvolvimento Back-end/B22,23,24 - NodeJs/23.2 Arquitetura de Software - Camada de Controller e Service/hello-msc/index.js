@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const rescue = require('express-rescue')
 const Author = require('./controllers/Authors');
 const errorMiddleware = require('./middleware/ErrorController');
+require('dotenv').config(); 
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.post('/authors', rescue(Author.createAuthor));
 
 
 app.use(errorMiddleware)
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {

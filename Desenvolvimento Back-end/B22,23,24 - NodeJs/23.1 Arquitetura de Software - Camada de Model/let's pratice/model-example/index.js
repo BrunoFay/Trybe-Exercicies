@@ -3,7 +3,7 @@
 const express = require('express');
 const Author = require('./models/Author');
 const Book = require('./models/Book');
-const UserController =require('./controlers/User')
+const UserController =require('./controllers/User')
 const Middleware= require('./middlewares')
 const { StatusCodes } = require('http-status-codes')
 const app = express();
