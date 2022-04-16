@@ -33,5 +33,3 @@ enum cardinalPoints {
 const north = cardinalPoints.north;
 const south = cardinalPoints['south'];
 const east = cardinalPoints[200];
-
-console.log(monday, tuesday, wednesday, red, yellow, north, south,east)
