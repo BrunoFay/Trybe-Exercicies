@@ -52,4 +52,4 @@ class Car {
   }
 }
 const myCar = new Car('ferrari',4,3)
-myCar.stop()
+myCar.speedDown()
