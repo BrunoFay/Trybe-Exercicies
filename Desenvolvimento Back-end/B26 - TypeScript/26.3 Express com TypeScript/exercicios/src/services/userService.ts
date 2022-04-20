@@ -26,14 +26,11 @@ export class UserService {
     const newUser = await this.model.createUser(user)
     return newUser
   }
-  async updateUser(user: IUser, id: number): Promise<IUserDb | void> {
-    const userExistInDB = await this.getUserById(id)
-    if (!userExistInDB) return userExistInDB
+  async updateUserById(user: IUser, id: number): Promise<IUserDb | void> {
     const userFormated = { id, ...user }
-    await this.model.updateUser(userFormated)
+    await this.model.updateUserById(userFormated)
 
   }
-
   async removeUser(id: number): Promise<void> {
     await this.model.removeUser(id)
   }

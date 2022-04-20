@@ -12,7 +12,7 @@ export class ProductModel {
   }
 
   public async getProductByQuery(query: IProductPrice): Promise<IProductDB> {
-    console.log(query);  
+    console.log(query);
     const [products] = await this.connection.execute<RowDataPacket[]>(`SELECT * from Products WHERE price ? ?`, [query.range, query.price])
     return products[0] as IProductDB
   }
@@ -32,15 +32,14 @@ export class ProductModel {
     const { insertId } = dataInserted
     return { id: insertId, ...product }
   }
-  public async updateProductById(product: IProduct, id: number): Promise<IProductDB> {
-    const [products] = await this.connection.execute<RowDataPacket[]>(`UPDATE Products SE name=?,brand=?,price=?,manufacturing_date=?,expiration_date=? WHERE id=?`,
+  public async updateProductById(product: IProduct, id: number): Promise<void> {
+    await this.connection.execute<RowDataPacket[]>(`UPDATE Products SE name=?,brand=?,price=?,manufacturing_date=?,expiration_date=? WHERE id=?`,
       [product.name,
       product.brand,
       product.price,
       product.manufacturingDate,
       product.expirationDate,
         id])
-    return products[0] as IProductDB
   }
   public async removeProductById(id: number): Promise<void> {
     await this.connection.execute(`DELETE FROM Products WHERE id=?`, [id])

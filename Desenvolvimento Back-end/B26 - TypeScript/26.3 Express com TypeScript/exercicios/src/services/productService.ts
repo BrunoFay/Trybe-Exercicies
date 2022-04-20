@@ -30,14 +30,14 @@ export class ProductService {
     const newProduct = await this.model.creatProduct(newProductFormated)
     return newProduct
   }
-  public async updateProductById(product: IProduct, id: number): Promise<IProductDB> {
+  public async updateProductById(product: IProduct, id: number): Promise<void> {
     const editedProductFormated = {
       ...product,
       manufacturing_date: product.manufacturingDate,
       expiration_date: product.expirationDate
     }
-    const editedProduct = await this.model.updateProductById(editedProductFormated, id)
-    return editedProduct
+    await this.model.updateProductById(editedProductFormated, id)
+
   }
   public async removeProductById(id: number): Promise<void> {
     await this.model.removeProductById(id)

@@ -7,7 +7,7 @@ route.get('/?q', postsController.getPostsByQuery)
 route.get('/:id', postsController.getPostById)
 route.get('/', postsController.getAllPosts)
 route.post('/',postsValidateInfos, postsController.creatPost)
-route.put('/:id',postsValidateInfos,postsController.updatePost)
+route.put('/:id',postsValidateInfos,postsController.updatePostById)
 route.delete('/:id',)
 
 

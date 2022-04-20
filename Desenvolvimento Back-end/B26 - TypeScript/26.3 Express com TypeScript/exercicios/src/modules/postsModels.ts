@@ -20,13 +20,24 @@ export class PostsModel {
   }
   public async creatPost(post: IPost): Promise<IPostDB> {
     const newPost = await this.connection.execute<ResultSetHeader>(`INSERT INTO Posts(title,author,category,publicationDate) VALUES(?,?,?,?)`,
-      [post.title, post.author, post.category, post.publicationDate])
+      [
+        post.title,
+        post.author,
+        post.category,
+        post.publicationDate
+      ])
+
     const [dataInserted] = newPost
     const { insertId } = dataInserted
     return { id: insertId, ...post }
   }
-  public async updatePost(post: IPost, id: number): Promise<void> {
-    await this.connection.execute(`UPDATE Posts SET title=?,author=?,category=? publicationDate=?WHERE id= ?`, [post.title, post.author, post.category, post.publicationDate, id])
+  public async updatePostById(post: IPostDB): Promise<void> {
+    await this.connection.execute(`UPDATE Posts SET title=?,author=?,category=? publicationDate=?WHERE id= ?`, [
+      post.title,
+      post.author,
+      post.category,
+      post.publicationDate,
+      post.id])
   }
   public async removePost(id: number): Promise<void> {
     await this.connection.execute(`DELETE  FROM Posts WHERE id=?`, [id])

@@ -25,11 +25,10 @@ export class PostsService {
     const newPost = await this.model.creatPost({ ...post, publicationDate: dateNow })
     return newPost
   }
-  public async updatePost(post: IPost, id: number): Promise<IPostDB> {
+  public async updatePostById(post: IPost, id: number): Promise<void> {
     const dateNow = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '')
-    await this.model.updatePost({ ...post, publicationDate: dateNow }, id)
-    const editedPost = { ...post, publicationDate: dateNow, id }
-    return editedPost
+    const postFormated = { ...post, publicationDate: dateNow, id }
+    await this.model.updatePostById(postFormated)
   }
   public async removePost(id: number): Promise<void> {
     await this.model.removePost(id)

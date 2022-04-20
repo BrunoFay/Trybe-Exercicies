@@ -18,16 +18,22 @@ export class UserModel {
     const [user] = await this.connection.execute<RowDataPacket[]>(`SELECT * FROM Users WHERE email = ?`, [email])
     return user[0] as IUserDb
   }
-
   public async createUser(user: IUser): Promise<IUserDb> {
-    const userCreated = await this.connection.execute<ResultSetHeader>(`INSERT INTO Users (name,email,password) VALUES (?,?,?)`, [user.name, user.email, user.password])
+    const userCreated = await this.connection.execute<ResultSetHeader>(`INSERT INTO Users (name,email,password) VALUES (?,?,?)`, [
+      user.name,
+      user.email,
+      user.password
+    ])
     const [dataInserted] = userCreated;
     const { insertId } = dataInserted;
     return { id: insertId, ...user }
   }
-  public async updateUser(user: IUserDb) {
-    await this.connection.execute<RowDataPacket[]>(`UPDATE Users SET name=?,email=?,password=? WHERE id= ?`, [user.name, user.email, user.password, user.id])
-
+  public async updateUserById(user: IUserDb) {
+    await this.connection.execute<RowDataPacket[]>(`UPDATE Users SET name=?,email=?,password=? WHERE id= ?`, [
+      user.name,
+      user.email,
+      user.password,
+      user.id])
   }
   public async removeUser(id: number) {
     await this.connection.execute(`DELETE  FROM Users WHERE id=?`, [id])
