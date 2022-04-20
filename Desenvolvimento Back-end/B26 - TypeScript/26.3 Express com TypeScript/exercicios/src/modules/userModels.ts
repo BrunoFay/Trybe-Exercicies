@@ -1,5 +1,6 @@
 import { Pool, ResultSetHeader, RowDataPacket } from "mysql2/promise"
 import { IUser, IUserDb } from "../interfaces/IUser"
+
 export class UserModel {
   public connection: Pool
   constructor(connection: Pool) {
