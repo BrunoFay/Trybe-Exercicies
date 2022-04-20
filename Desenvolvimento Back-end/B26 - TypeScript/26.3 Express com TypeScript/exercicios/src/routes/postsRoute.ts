@@ -1,14 +1,14 @@
 import { Router } from "express";
 import { PostsController } from "../controllers/postsController";
 import { postsValidateInfos } from "../middlewares/validatePostsInfos";
-const router = Router()
+const route = Router()
 const postsController = new PostsController()
-router.get('/', postsController.getPostsByQuery)
-router.get('/', postsController.getAllPosts)
-router.get('/:id', postsController.getPostById)
-router.post('/',postsValidateInfos, postsController.creatPost)
-router.put('/:id',postsValidateInfos,postsController.updatePost)
-router.delete('/:id',)
+route.get('/?q', postsController.getPostsByQuery)
+route.get('/:id', postsController.getPostById)
+route.get('/', postsController.getAllPosts)
+route.post('/',postsValidateInfos, postsController.creatPost)
+route.put('/:id',postsValidateInfos,postsController.updatePost)
+route.delete('/:id',)
 
 
-export default router
+export default route
