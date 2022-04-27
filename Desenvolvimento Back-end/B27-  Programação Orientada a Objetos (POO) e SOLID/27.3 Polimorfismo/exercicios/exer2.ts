@@ -7,48 +7,34 @@ interface Enrollment {
 
 class Student extends Person implements Enrollment {
   _enrollment: string
+  private _evaluationsResults: number[] = []
   constructor(
     public _name: string,
     public _birthDate: string,
-    private _examsGrades: number[],
-    private _worksGrades: number[]
   ) {
     super(_name, _birthDate)
     this._enrollment = this.generateEnrollment()
   }
   generateEnrollment() {
-    const stringRandom = Math.random().toString(36).substring(2, 15)
+    const stringRandom = Math.random().toString(36).substring(1, 10)
     return stringRandom
   }
   get enrollment(): string {
     return this._enrollment
   }
-  get examsGrades(): number[] {
-    return this._examsGrades
-  }
-  get worksGrades(): number[] {
-    return this._worksGrades
-  }
-  set enrollment(value: string) {
-    if (value.length >= 16) this._enrollment = value
-    else { console.log('Enrollment must be at least 16 characters long') }
-  }
-  set examsGrades(value: number[]) {
-    if (value.length <= 4) this._examsGrades = value
-    else { console.log('Exams grades must be at least 4') }
-  }
-  set worksGrades(value: number[]) {
-    if (value.length <= 2) this._worksGrades = value
-    else { console.log('Works grades must be at least 2') }
+  get evaluationsResults(): number[] {
+    return this._evaluationsResults
   }
   sumGrades(): number {
-    const allGrades = [...this._examsGrades, ...this._worksGrades]
-    return allGrades.reduce((acc, curr) => acc += curr, 0)
+    return this._evaluationsResults.reduce((acc, curr) => acc += curr, 0)
   }
   sumAverageGrade(): number {
-    const allGrades = [...this._examsGrades, ...this._worksGrades]
+    const allGrades = [...this._evaluationsResults]
     const result: number = (allGrades.reduce((acc, curr) => acc += curr, 0) / allGrades.length)
     return Number(result.toFixed(2))
+  }
+  addEvaluationResult(value:number) {
+    this._evaluationsResults.push(value)
   }
   toString(): string {
     return `the student is ${this._name}, have ${this.calculateAge(this._birthDate)} years, your enrollment is ${this._enrollment}, the average grade is ${this.sumAverageGrade()}  `
@@ -129,7 +115,7 @@ export class Teacher extends Employee {
 
 }
 
-const brunoF = new Student('bruno fay', '1996/04/18', [10, 10, 10, 10], [9, 9])
-const alessandraR = new Student('alessandra Rebello', '1991/06/03', [10, 10, 101, 10], [90, 90])
+const brunoF = new Student('bruno fay', '1996/04/18', )
+const alessandraR = new Student('alessandra Rebello', '1991/06/03', )
 const emilio = new Teacher('emilio', '1976/04/13', 20000, Subject.MATH, '2015/07/03')
 const marcia = new Teacher('marcia mainardi', '1976/04/13', 4000, Subject.HIST, new Date())
