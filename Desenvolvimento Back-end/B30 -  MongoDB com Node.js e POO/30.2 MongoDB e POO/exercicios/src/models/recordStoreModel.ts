@@ -5,7 +5,8 @@ import { RecordStore, RecordStoreDocument } from '../types/recordStore';
 export const RercordSchema = new Schema<RecordStoreDocument>({
   artist: String,
   title: String,
-  format: Number,
+  format: String,
+  yearPublished:Number,
   new: Boolean
 })
 export class RecordStoreModel extends MongoModel<RecordStore>{

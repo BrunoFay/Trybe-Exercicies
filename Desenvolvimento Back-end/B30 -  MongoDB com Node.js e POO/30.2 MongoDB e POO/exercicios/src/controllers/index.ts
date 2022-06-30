@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response } from "express";
-import { Service } from "../services";
 
 export interface Controller {
   route:string

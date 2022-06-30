@@ -11,8 +11,13 @@ export class RecordStoreController implements Controller {
   create = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { body } = req
+      if(Array.isArray(body)){
+        const newsRecords= await this.service.createMany(body)
+        return res.status(201).json(newsRecords)
+
+      }
       const newRecord = await this.service.create(body)
-      res.status(201).json(newRecord)
+      return res.status(201).json(newRecord)
     } catch (error) {
       next(error)
     }

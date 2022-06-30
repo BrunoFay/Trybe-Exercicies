@@ -3,7 +3,8 @@ import {Document} from 'mongoose'
 export const recordStoreZodSchema=z.object({
   artist:string(),
   title:string(),
-  format:number(),
+  format:string(),
+  yearPublished:number(),
   new:boolean()
 })
 export type RecordStore = z.infer<typeof recordStoreZodSchema>
