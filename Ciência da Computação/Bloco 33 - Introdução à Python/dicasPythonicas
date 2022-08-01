@@ -1,0 +1,6 @@
+criar ---- python3 -m venv .venv
+entrar no ambiente ----- source .venv/bin/activate
+
+obs: .venv é o nome do ambiente(pode ser alterado)
+
+usar o "fix lint" com o black ---- python3 -m black --nome_do_arquivo--
